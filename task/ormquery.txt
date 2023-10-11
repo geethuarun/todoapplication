@@ -1,0 +1,86 @@
+from task.models import Todos
+
+ModelName.objects.create(field_name=value)
+
+Todos.objects.create(title="waterbill",user="hari")
+
+======fetch all records=========
+select * from Todos
+
+ORM query
+qs=ModelName.objects.all()
+queryset
+qs=Todos.objects.all()
+qs
+================================
+
+=====ORM query for filter records======
+
+fetch all todos inserted by hari
+qs=Todos.objects.filter(user="hari")
+qs
+
+fetch all pending Todos inserted by user vijay
+qs=Todos.objects.filter(user="vijay",status="False")
+qs
+
+=========fetch specific object==========
+
+qs=Todos.objects.get(id=1)
+
+====ORM query for updating a record=====
+
+ModelName.objects.filter(id=1)update(status=True)
+
+get is not used here 
+
+=======field lookup========
+
+gte=  >=
+lte=  <=
+gt=greater than
+lt=lessthan
+in
+
+=======================================BOOK MODEL==================================
+
+ from task.models import Book
+
+ Book.objects.create(name="randamoozham",author="mt",price=500,publisher="abc")
+
+ Book.objects.create(name="aarachar",author="meera",price=400,publisher="goodword")
+
+ Book.objects.create(name="indulekha",author="o chandu",price=600,publisher="insight")
+
+ Book.objects.create(name="aadujeevitham",author="bennyamin",price=450,publisher="wonderworld")
+
+ Book.objects.create(name="alchemist",author="paulo",price=450,publisher="happyland")
+
+qs=Book.objects.all()
+
+qs=Book.objects.filter(author="mt")
+
+qs=Book.objects.get(id=3)
+
+Book.objects.filter(author="mt").update(price=600)
+
+Book.objects.filter(id__gte=1,id__lte=3).update(price=500)
+
+qs=Book.objects.get(id=1)
+
+Book.objects.filter(author__in=["paulo","o chandu"])
+
+=====================delete====================
+
+ModelName.objects.filter(id=1).delete()
+
+===============================================
+ORM query for listing specific column
+
+qs=Todos.objects.all().values("id")
+
+qs=Todos.objects.all().values("title")
+
+=======================exclude==================
+
+qs=Todos.objects.all().exclude(user="vijay")
